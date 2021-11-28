@@ -1,0 +1,19 @@
+{% extends 'layout.html' %}
+
+{% block title %}
+    Main page.
+{% endblock %}
+
+{% block body %}
+<h1>Books</h1>
+<ul>
+    {% for book in bookdetails %}
+        <li>
+            <a href="{{ url_for('bookData', book_isbn=book.isbn,username=username) }}">
+                {{book.isbn}}   {{book.title}} - {{book.author}}
+            </a>
+        </li>
+    {% endfor %}
+</ul>
+
+{% endblock %}

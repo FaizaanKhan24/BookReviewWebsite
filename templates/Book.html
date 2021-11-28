@@ -1,0 +1,42 @@
+{% extends 'layout.html' %}
+
+{% block title %}
+    {{bookdata.title}}
+{% endblock %}
+
+{% block body %}
+    <h1>{{ bookdata.title }}</h1>
+    <label><b>Author</b> : {{ bookdata.author }}</label><br>
+    <label><b>ISBN</b> : {{ bookdata.isbn }}</label><br>
+    <label><b>Year of publish</b> : {{ bookdata.year }}</label><br>
+
+    <div>
+        <h3>Add review</h3>
+        <div>
+            <form method="POST">
+                <label><b>Rating</b> :</label>
+                <input type="number" min="1" max="5" name="review_number" value="1"><br>
+                <textarea rows="5" cols="50" name="book_review" placeholder="Enter a review"></textarea><br>
+                <button type="submit">Submit</button>
+            </form><br>
+        </div>
+    </div>
+
+    <h3>Good Reads Reviews</h3>
+    <label><b>Number of rating count</b> : {{ bookdata.ratingsNumber }}</label><br>
+    <label><b>Average rating</b> : {{ bookdata.averageRating }}</label>
+
+    <h3>User reviews</h3>
+    <ul>
+        {% for review_value in reviewdata %}
+        <li>
+            <strong>{{ review_value.username }}</strong><br>
+            <b>Rating</b> : {{ review_value.rating }} <br>
+            <h5>Review : </h5>
+            <div style="white-space:pre-line;">
+                {{ review_value.review }}
+            </div>
+        </li>
+        {% endfor %}
+    </ul>
+{% endblock %}

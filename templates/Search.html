@@ -1,0 +1,15 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    {{username}}
+{% endblock %}
+
+{% block body %}
+<div>
+    <h1>Welcome {{username}}</h1>
+    <form method="POST">
+        <input type="search" name="search" placeholder="Search..." autofocus>
+        <button type="submit">Search</button>
+    </form>
+</div>
+{% endblock %}
